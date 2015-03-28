@@ -1,0 +1,220 @@
+[
+ ;; schema for geo-db data base
+ ;; for more detailed explanation refer to:
+ ;; http://opengeodb.org/wiki/OpenGeoDB_-_Dateninhalt (German only)
+
+ ;; [:loc_id :ags :ascii :name :lat :lon :amt :plz :vorwahl :einwohner :flaeche :kz :typ :level :of :invalid]
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/loc_id
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "location id (primary key)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/ags
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "official community key"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/ascii
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/doc "name for sorting"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/doc "name"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/lat
+  :db/valueType :db.type/double
+  :db/cardinality :db.cardinality/one
+  :db/doc "latitude"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/lon
+  :db/valueType :db.type/double
+  :db/cardinality :db.cardinality/one
+  :db/doc "longitude"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/amt
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/doc "administration district"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/plz
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "zip code (plz)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/vorwahl
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "predial number (vorwahl)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/einwohner
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "number of inhabitants (einwohnerzahl)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/flaeche
+  :db/valueType :db.type/float
+  :db/cardinality :db.cardinality/one
+  :db/doc "area (flaeche)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/kfz
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/doc "license tag (kfz kennzeichen)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :community/typ
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/doc "Community type enum values"
+  :db.install/_attribute :db.part/db}
+
+ ;; community/typ enum values
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Verwaltungsbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ISIT_-_Fraunhofer-Institut_fuer_Siliziumtechnologie]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Ortschaft]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtteil_ehem_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Schoefferstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Ort]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Ringwallburg_8_o_9_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Karolingerstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Dom-_und_Kaiserstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Strasse]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Verwaltungsgemeinschaft]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Landkreis]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Freie_und_Hansestadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Freizeitpark]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Wallburg_ehem_Ringwallburg_9_Jahrhundert]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gneisenaustadt_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Wohnplatz]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Steenborch_Niederungsburg_um_1300]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Amt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kreisstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Sickingenstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Marktflecken]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/aeusserer_Stadtbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Wissenschaftsstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtkreis]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/sonstiges]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Bundesland]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Ortsbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtviertel]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Statistischer_Bezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtteil_von_Rosslau]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/hist_1_mittelalterliche_Stadt_in_Nordeuropa]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Flugplatz]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Echeho_Ringwallburg_10_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Lutherstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kurort]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Tierpark]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Markt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Bergstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehen_Turmhuegelburg_12_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Landeshauptstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Hansestadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Brueder-Grimm-Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Regierungsbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Regierungsbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kirchspiel]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/aelteste_Kirchengruendung_in_S-H_9_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gemarkung]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gemeinde]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Gemeinde]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Ort]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stiftung_Seebuell_Ada_und_Emil_Nolde]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtteilbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Bezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Barockschloss_18_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Wuestung]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/innerer_Stadtbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/IZET_-_Innovationszentrum_Itzehoe]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kreis]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Liebenbachstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gedenkstaette_Museumsschiff_Marine-Ehrenmal_Laboe]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Hoehenluftkurort]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Quartier]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kurort_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Barbarossastadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Schachdorf]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtteil]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kreisfreie_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Prinzessinnenhof_16_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Glyksborg_17_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/kreisfreie_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Dorf]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Loreleystadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Nordseebad]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadtbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/documenta-Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Ortsteil]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Weiler]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Direktionsbezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Universitaetsstadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/statistischer_Bezirk]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/aufgeloeste_Gemeinde]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Ringwallburg_9_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Kreisfrei_Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Drehort_der_IMMENHOF-Filme]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/ehem_Esesfelth_Ringwallburg_8_Jh]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Region]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gemeindeteil]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Stadteil]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Konrad-Zuse-Stadt]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Flecken]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/Gedenkstaette_Museum]
+ [:db/add #db/id[:db.part/user] :db/ident :geodb.typ/_1904_erbauter_Bismarckturm_im_Luebschen_Gehoelz_Stadtforst_Itzehoe]
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/level
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "level (ebene)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :community/of
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/doc "part of (Teil von)"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :geodb/invalid
+  :db/valueType :db.type/boolean
+  :db/cardinality :db.cardinality/one
+  :db/doc "invalid flag"
+  :db.install/_attribute :db.part/db}
+ ]
