@@ -5,11 +5,13 @@
 
  ;; [:loc_id :ags :ascii :name :lat :lon :amt :plz :vorwahl :einwohner :flaeche :kz :typ :level :of :invalid]
 
+ ;; :loc_id gets the primary key
+
  {:db/id #db/id[:db.part/db]
-  :db/ident :geodb/loc_id
+  :db/ident :geodb/id
   :db/valueType :db.type/long
   :db/cardinality :db.cardinality/one
-  :db/doc "location id (primary key)"
+  :db/doc "location id (primary source key)"
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
@@ -86,7 +88,7 @@
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
-  :db/ident :geodb/kfz
+  :db/ident :geodb/kz
   :db/valueType :db.type/string
   :db/cardinality :db.cardinality/one
   :db/fulltext true
@@ -94,7 +96,7 @@
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
-  :db/ident :community/typ
+  :db/ident :geodb/typ
   :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/one
   :db/doc "Community type enum values"
@@ -205,7 +207,7 @@
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
-  :db/ident :community/of
+  :db/ident :geodb/of
   :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/one
   :db/doc "part of (Teil von)"
